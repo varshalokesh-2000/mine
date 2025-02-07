@@ -1,0 +1,100 @@
+$envelope-width: 320px;
+$envelope-height: 220px;
+$envelope-color: #e95f55;
+$letter-color: #fff8dc;
+$letter-text-color: #8b4513;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #fce4ec;
+}
+
+.envelope {
+  position: relative;
+  width: $envelope-width;
+  height: $envelope-height;
+  background-color: $envelope-color;
+  margin: 10em auto;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.letter {
+  position: absolute;
+  width: 80%;
+  height: 0%;  // Letter should start hidden
+  padding: 1em;
+  font-size: 0.9em;
+  color: $letter-text-color;
+  background-color: $letter-color;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: all 0.8s ease-in-out;
+  top: calc(100% - 20px); // Slightly inside the envelope to hide initially
+  left: 50%;
+  transform: translate(-50%, 0%);
+  border-radius: 5px;
+  z-index: 2;
+  overflow: hidden;  // Prevent content overflow
+  clip-path: inset(0 0 100% 0); // Fully hidden before opening
+}
+
+
+
+.message {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.open .message {
+  opacity: 1;
+}
+
+.open .letter {
+  height: 250px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  clip-path: inset(0 0 0 0); // Fully reveal when opened
+}
+
+
+.triangleDown {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: $envelope-width / 2 solid transparent;
+  border-right: $envelope-width / 2 solid transparent;
+  border-top: 113px solid darken($envelope-color, 10%);
+  top: 0;
+  left: 0;
+  transition: transform 0.5s ease-in-out;
+  transform-origin: top center;
+}
+
+.open .triangleDown {
+  transform: rotateX(180deg);
+}
+
+.triangleLeft {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: $envelope-height solid transparent;
+  border-right: $envelope-width solid $envelope-color;
+  top: 0;
+  left: 0;
+}
+
+.triangleRight {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: $envelope-height / 2 solid transparent;
+  border-bottom: $envelope-height / 2 solid transparent;
+  border-left: $envelope-width / 2 solid lighten($envelope-color, 5%);
+  top: 0;
+  right: 0;
+}
