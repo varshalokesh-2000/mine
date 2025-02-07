@@ -1,6 +1,8 @@
 "use client";
-import GiftBox from "@/components/GiftBox";
-import React from "react";
+
+import dynamic from "next/dynamic";
+
+const GiftBox = dynamic(() => import("@/components/GiftBox"), { ssr: false });
 
 const GiftBoxPage = () => {
   return <GiftBox />;
