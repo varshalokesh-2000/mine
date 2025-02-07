@@ -1,8 +1,8 @@
 "use client";
-
+import dynamic from "next/dynamic";
+const DoveLetterLoader = dynamic(() => import("@/components/DoveLetterLoader"), { ssr: false });
 import { useState } from "react";
 import AnimatedTextSequence from "@/components/AnimatedTextSequence";
-import DoveLetterLoader from "@/components/DoveLetterLoader";
 import GiftBox from "@/components/GiftBox";
 
 const MainComponent = () => {
