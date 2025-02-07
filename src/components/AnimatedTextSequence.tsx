@@ -1,8 +1,8 @@
 "use client";
 
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Lottie from "lottie-react";
 import {
   Indie_Flower,
   Permanent_Marker,
@@ -10,6 +10,8 @@ import {
   Bangers,
   Comic_Neue,
 } from "next/font/google";
+import dynamic from 'next/dynamic';
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 
 // 🎨 Background Colors Based on Animations & Text
 const BACKGROUNDS = [

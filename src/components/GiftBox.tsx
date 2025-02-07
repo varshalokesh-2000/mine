@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Lottie from "lottie-react";
+import dynamic from 'next/dynamic';
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 import giftBoxImg from "../animations/giftbox.json";
 import roseBouquetImg from "../animations/rose.json";
 import Letter from "./Letter/Letter";
